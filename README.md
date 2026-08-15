@@ -90,21 +90,25 @@ With `num_aug = 2`, each original tweet produces two augmented variants, increas
 ├── twitter_training.csv
 ├── twitter_validation.csv
 └── README.md
+```
 
 ## How to Run
 
-1. Clone the repository and open the notebook in Jupyter Notebook, JupyterLab, or Kaggle.
+1. Clone the repository and open the notebook in **Jupyter Notebook, JupyterLab, or Kaggle**.
 2. Make sure `twitter_training.csv` and `twitter_validation.csv` are in the same directory as the notebook, or update the file paths accordingly.
 3. Install the required dependencies:
 
 ```bash
 pip install pandas numpy nltk scikit-learn matplotlib seaborn
+```
 
+4. Run the notebook cells from top to bottom. The notebook will download the required NLTK resources, such as **WordNet** and **stopwords**, when needed.
 ## Limitations
 
 - Word-level augmentation does not guarantee semantic preservation. A synonym replacement, insertion, swap, or deletion can change the meaning or sentiment of a short tweet.
 - The results are specific to this dataset, the **TF-IDF + Linear SVM** classifier, the tested augmentation configurations, and the low-resource budget of **300 tweets per class**.
 - The experiment only evaluated simple, CPU-based word-level augmentation techniques. More advanced approaches, such as **back-translation** and **contextual or transformer-based substitution**, may produce different results.
+- The full-data result is used as a **comparison reference within this experiment**, rather than as a theoretical maximum for the task.
 
 ## Future Work
 
@@ -113,6 +117,7 @@ pip install pandas numpy nltk scikit-learn matplotlib seaborn
 - Repeat the experiment with a **fine-tuned DistilBERT classifier** instead of TF-IDF + Linear SVM.
 - Vary the low-resource budget, for example **50, 100, 300, and 1,000 tweets per class**, to investigate whether augmentation becomes useful at different training sizes.
 - Test the augmentation techniques on **longer-form text**, such as product or movie reviews, to investigate whether the short-text nature of tweets contributes to the observed negative result.
+- Compare augmentation with simply adding more **real labeled examples** to determine whether synthetic data provides a meaningful advantage over additional real training data.
 
 ## Reference
 
